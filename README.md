@@ -31,7 +31,7 @@ The 4-beat reflex runs in production via two components:
 ### Download
 
 - [PDF](The_4-Beat_Reflex_for_Grounded_AI.pdf)
-- [Zenodo (DOI pending)](https://doi.org/10.5281/zenodo.21364344)
+- [Zenodo](https://doi.org/10.5281/zenodo.21364344)
 
 ### Author
 
