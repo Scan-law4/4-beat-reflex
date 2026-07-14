@@ -4,7 +4,7 @@
 
 A technical companion to the [Law-4 Compliant™ Framework](https://doi.org/10.5281/zenodo.17585621).
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.PLACEHOLDER.svg)](https://doi.org/10.5281/zenodo.PLACEHOLDER)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21364344.svg)](https://doi.org/10.5281/zenodo.21364344)
 
 ### Abstract
 
@@ -31,7 +31,7 @@ The 4-beat reflex runs in production via two components:
 ### Download
 
 - [PDF](The_4-Beat_Reflex_for_Grounded_AI.pdf)
-- [Zenodo (DOI pending)](https://doi.org/10.5281/zenodo.PLACEHOLDER)
+- [Zenodo (DOI pending)](https://doi.org/10.5281/zenodo.21364344)
 
 ### Author
 
