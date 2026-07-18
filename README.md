@@ -21,17 +21,17 @@ Autonomous AI agents exhibit a persistent failure mode: when presented with a qu
 | **Cite** | Reference the source | Unverifiable claims |
 | **Answer** | Deliver grounded response | Premature delivery |
 
-### Deployed Implementation
+### Deployed Implementation (v2.0, July 2026)
 
-The 4-beat reflex runs in production via two components:
+The 4-beat reflex runs in production via two components, now infrastructure-enforced:
 
 - **`kb_search.py`** — deterministic script: semantic search → read top 3 → format with sources, in one call
-- **4-beat reflex plugin** — injects the exact command before every turn via Hermes Agent `pre_llm_call` hook, with `transform_llm_output` flagging for unverified responses
+- **4-beat reflex plugin** — runs `kb_search.py` via subprocess in the `pre_llm_call` hook and injects search results into context before the model generates a response. The reflex is no longer model-voluntary — the search happens automatically.
 
 ### Download
 
 - [PDF](The_4-Beat_Reflex_for_Grounded_AI.pdf)
-- [Zenodo](https://doi.org/10.5281/zenodo.21364344)
+- [Zenodo](https://doi.org/10.5281/zenodo.21364344) (latest: v2.0 with [addendum](https://doi.org/10.5281/zenodo.21427548))
 
 ### Author
 
