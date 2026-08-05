@@ -12,6 +12,18 @@ Autonomous AI agents exhibit a persistent failure mode: when presented with a qu
 
 **Stop. Search. Cite. Answer.** is a 4-beat reflex that interrupts the impulse before the first token. Each beat maps to an operational gate corresponding to one of the four immutable laws of the Law-4 Compliant™ Framework. The reflex is implementable at three levels: instruction text, pipeline hooks, and reflex injection.
 
+### 🖥️ Call for Compute Sponsors & Grants
+
+The 4-beat reflex is currently deployed on a fleet of specialized Hermes agents running on consumer hardware (single RTX 3090, 24GB VRAM). To move from single-machine validation to generalizable benchmarks, we need compute:
+
+- **Quantization benchmarks:** profiling reflex injection latency across GGUF quantizations (Q4_K_M through Q8_0) on Llama.cpp — establishing minimum-viable VRAM profiles so others can deploy the reflex on their own hardware
+- **VRAM boundary testing:** at what context length does the injected search result cross the threshold where the model stops attending to it? This is critical for the reflex's reliability on constrained hardware
+- **Continuous API evaluations:** automated regression tests against provider API changes (model swaps, context window adjustments, tokenizer changes) — the reflex must survive model provider churn
+
+This is independent, self-funded research with no institutional affiliation. If your organization provides GPU compute credits, research grants, or infrastructure sponsorship for open-source AI safety work, we can put it to immediate, measurable use.
+
+**Contact:** scan@law-4.com — benchmarks are reproducible, results are published openly, and every GPU hour goes directly to expanding the reflex's hardware compatibility matrix.
+
 ### The Four Beats
 
 | Beat | Operation | Prevents |
