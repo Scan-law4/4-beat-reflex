@@ -44,7 +44,8 @@ The 4-beat reflex runs in production as a two-tier injection pipeline, infrastru
 ### Download
 
 - [PDF](The_4-Beat_Reflex_for_Grounded_AI.pdf)
-- [Zenodo](https://doi.org/10.5281/zenodo.21364344) (v2.0 paper, with [v2.0 addendum](https://doi.org/10.5281/zenodo.21427548); v3.0 architecture deposit forthcoming)
+- [Zenodo](https://doi.org/10.5281/zenodo.21364344) (v2.0 paper, with [v2.0 addendum](https://doi.org/10.5281/zenodo.21427548))
+- [Zenodo v3.0](https://doi.org/10.5281/zenodo.22223188) — the deployed v3.0 two-tier architecture (README + prior-version files)
 
 ### Author
 
