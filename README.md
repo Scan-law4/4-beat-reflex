@@ -40,6 +40,15 @@ The 4-beat reflex runs in production as a two-tier injection pipeline, infrastru
 - **Tier 1 — `kb_tier1.py`** — deterministic, sub-second: scores the session's ideas ledger + the recurring-lessons log against the incoming message (token-similarity with per-gate time decay), MMR-selects the top hits, and guards them through a human-decision denylist. Configurable per deployment via `ideas.min_score` / `ideas.max` (admission floor, suggestion cap).
 - **Tier 2 — `kb_search.py`** — semantic fallback: hybrid search over the agent's wiki knowledge base when Tier 1 finds nothing above the floor.
 - **4-beat reflex plugin** — orchestrates both tiers in the `pre_llm_call` hook and injects results into context before the model generates a response. The reflex is no longer model-voluntary — the search happens automatically. Session bookkeeping is LRU-bounded (512 sessions, lockstep eviction) so a long-lived gateway cannot accumulate unbounded state; suggestion dedup is once-per-session.
+- **Per-profile scope isolation (September 2026)** — a profile's knowledge scope comes from its **configuration only**. The ambient environment is never consulted, and the Tier-1 process is spawned with a child environment scrubbed of the scope variables, so a stray exported variable cannot redirect one profile's retrieval at another profile's knowledge base. See below.
+
+### Per-profile scope isolation (September 2026)
+
+On a host that runs several agents, the reflex must never serve one agent's knowledge to another. Scope — knowledge-base root, lessons log, ideas ledger, search script, search collection — is therefore read **only** from each profile's configuration, passed to the Tier-1 process as explicit arguments, and that process runs with a child environment scrubbed of the scope variables.
+
+Ambient environment values cannot influence it. This matters because a variable left over in a shell is not transient: a terminal session snapshot re-exports whatever a shell has held and rewrites itself after every command, so a single stray export persists indefinitely.
+
+The failure this closes: an exported variable overrode the configured scope, and one agent's Tier-2 search ran another agent's search script against another agent's wiki — knowledge from one profile silently appearing in another's injected results. The fix is a precedence change with regression tests that encode the incident, not a redesign: the plugin no longer consults ambient scope at all, so a poisoned environment has nothing left to influence.
 
 ### Download
 
